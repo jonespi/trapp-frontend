@@ -1,5 +1,8 @@
 .company {
   display: flex;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 400px;
 }
 
 .company div {

@@ -43,7 +43,10 @@ const SignUp = props => {
     <section>
       <h1>Signup</h1>
       <form className="signup-form" onSubmit={handleSubmit}>
-        <div role="alert">{error && <p className="error">{error}</p>}</div>{' '}
+        <div role="alert">
+          {error && <p className="error">{error}</p>}
+          {loading ? <p>loading...</p> : ''}
+        </div>
         <div className="input-field">
           <label>
             <FontAwesomeIcon icon="user" color="black" size="sm" />
@@ -89,7 +92,6 @@ const SignUp = props => {
         <button type="submit" className="signup-button">
           Sign Up
         </button>
-        {loading ? <p>loading...</p> : ''}
       </form>
     </section>
   );

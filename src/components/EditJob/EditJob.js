@@ -33,6 +33,11 @@ const EditJob = props => {
       job_posting
     } = e.target;
 
+    if (!company_name.value || !position.value) {
+      setError('missing company or position');
+      return;
+    }
+
     setError(
       updateJob({
         _id: job._id,
@@ -41,7 +46,10 @@ const EditJob = props => {
         position: position.value,
         category: category.value,
         dateApplied: date_applied.value,
-        techStack: tech_stack.value.split(',').filter(job => job !== '')
+        techStack: tech_stack.value
+          .split(',')
+          .map(tech => tech.trim())
+          .filter(job => job !== '')
       })
     );
     setSuccess(true);
@@ -63,7 +71,7 @@ const EditJob = props => {
             <div>
               <SegmentControl category={job.category} />
             </div>
-            <div>
+            <div className="input-field">
               <label htmlFor="company_name">Company</label>
               <input
                 type="text"
@@ -73,7 +81,7 @@ const EditJob = props => {
                 className="form-input"
               />
             </div>
-            <div>
+            <div className="input-field">
               <label htmlFor="job_posting">Job Posting</label>
               <input
                 type="text"
@@ -83,7 +91,7 @@ const EditJob = props => {
                 className="form-input"
               />
             </div>
-            <div>
+            <div className="input-field">
               <label htmlFor="position">Position</label>
               <input
                 type="text"
@@ -93,7 +101,7 @@ const EditJob = props => {
                 className="form-input"
               />
             </div>
-            <div>
+            <div className="input-field">
               <label htmlFor="date_applied">Date Applied</label>
               <input
                 type="date"
@@ -104,7 +112,7 @@ const EditJob = props => {
                 className="form-input"
               />
             </div>
-            <div>
+            <div className="input-field">
               <label htmlFor="tech_stack">Technologies</label>
               <input
                 type="text"
@@ -117,7 +125,7 @@ const EditJob = props => {
             <button type="submit">Save</button>
             {success && (
               <p className="success">
-                {success} <span>Saved! </span> <Emoji symbol="😃" />
+                Saved!
                 <Link to="/dashboard">Back to Dashboard</Link>
               </p>
             )}

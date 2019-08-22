@@ -53,7 +53,7 @@ const Login = props => {
     <section>
       <h1>Log In</h1>
       <form className="login-form" onSubmit={handleSubmitJwtAuth}>
-        <div role="alert">{error && <p className="error">{error}</p>}</div>{' '}
+        <div role="alert">{error && <p className="error">{error}</p>}</div>
         <div className="input-field">
           <label htmlFor="username">
             <FontAwesomeIcon icon="user" color="black" size="sm" /> Username{' '}

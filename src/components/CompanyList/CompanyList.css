@@ -2,11 +2,14 @@
   display: flex;
   justify-content: space-between;
   width: 100%;
-  max-width: 400px;
+  max-width: 475px;
+  margin: 0 auto;
 }
 
-.company div {
-  flex: 1
+.company label {
+  flex: 1;
+  overflow: auto;
+  font-size: 10px;
 }
 
 [type=radio] {

@@ -2,7 +2,7 @@
 
 TrApp tracks your applications to developer jobs, allowing you to focus on the job search.
 
-### Live Demo: https://trapp-frontend.now.sh
+### Live Demo: https://trapp-frontend.jonespi.now.sh
 
 ### Repository: https://github.com/cohencodes/trapp-frontend
 

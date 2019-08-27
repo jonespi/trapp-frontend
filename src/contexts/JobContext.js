@@ -21,7 +21,7 @@ const JobContextProvider = props => {
   const addJob = (jobData, redirect) => {
     JobApiService.postJob(jobData).then(res => {
       if (res.error) {
-        return res.error;
+        console.log(res.error);
       } else {
         JobApiService.getJobs().then(jobs => setJobs(jobs));
         redirect();

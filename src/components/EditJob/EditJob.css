@@ -20,3 +20,7 @@
   color: #efc958;
 }
 
+.success {
+  display: flex;
+  flex-direction: column;
+}

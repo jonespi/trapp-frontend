@@ -1,26 +1,31 @@
 .company {
- display: flex;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 475px;
+  margin: 0 auto;
 }
 
-.company div, label {
-  flex: 1
+.company label {
+  flex: 1;
+  overflow: auto;
+  font-size: 10px;
 }
 
-[type=radio] { 
+[type=radio] {
   position: absolute;
   opacity: 0;
   width: 0;
   height: 0;
 }
 
-[type=radio] + img {
+[type=radio]+img {
   cursor: pointer;
 }
 
 
-[type=radio]:checked + img {
+[type=radio]:checked+img {
   border: 2px solid #efc958;
-
 }
 
 .company img {

@@ -1,5 +1,4 @@
 import React, { useState, useContext } from 'react';
-import Emoji from '../Emoji/Emoji';
 import { JobContext } from '../../contexts/JobContext';
 import { techStackArray, SegmentControl } from '../../utils/Helpers';
 import CompanySearch from '../CompanySearch/CompanySearch';
@@ -22,8 +21,13 @@ const JobForm = props => {
       category,
       tech_stack,
       date_applied,
-      job_posting,
+      job_posting
     } = e.target;
+    if (!company_name.value || !position.value) {
+      setError('missing company or position');
+      return;
+    }
+
     const stack = techStackArray(tech_stack.value);
     return setError(
       addJob(
@@ -41,24 +45,18 @@ const JobForm = props => {
     );
   };
 
-  const getLogo = (logo) => {
+  const getLogo = logo => {
     setLogo(logo);
-  }
+  };
 
   return (
     <section>
       <h1>Add Job</h1>
+      <div>{error && <p className="error">{error}</p>}</div>
       <form className="post-job-form" onSubmit={handleSubmitJob}>
-        <div role="alert">
-          {error && (
-            <p className="error">
-              {error} <Emoji symbol="😃" />
-            </p>
-          )}
-        </div>{' '}
         <SegmentControl />
         <CompanySearch getLogo={getLogo} />
-        <div>
+        <div className="input-field">
           <label htmlFor="job_posting">Job Posting</label>
           <input
             type="text"
@@ -67,7 +65,7 @@ const JobForm = props => {
             placeholder="http://linkedin.com"
           />
         </div>
-        <div>
+        <div className="input-field">
           <label htmlFor="position">Position</label>
           <input
             type="text"
@@ -76,7 +74,7 @@ const JobForm = props => {
             placeholder="Software Engineer"
           />
         </div>
-        <div>
+        <div className="input-field">
           <label htmlFor="date_applied">Date Applied</label>
           <input
             type="date"
@@ -86,7 +84,7 @@ const JobForm = props => {
             id="date_applied"
           />
         </div>
-        <div>
+        <div className="input-field">
           <label htmlFor="tech_stack">Technologies</label>
           <input
             type="text"

@@ -16,9 +16,20 @@ const JobCard = props => {
 
   return (
     <li className="job-card" tabIndex="0">
-      <img src={props.logo} alt={props.companyName} />
+      <img
+        src={props.logo}
+        alt={props.companyName}
+        onError={e => {
+          e.target.setAttribute(
+            'src',
+            'https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/240/apple/198/office-building_1f3e2.png'
+          );
+        }}
+      />
       <div className="job-content">
-        <h2>{props.companyName}</h2>
+        <h2>
+          <a href={props.jobPosting}>{props.companyName}</a>
+        </h2>
         <p className="company-title"> {props.position} </p>
         <div>
           <button

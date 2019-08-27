@@ -13,9 +13,9 @@ const SignUp = props => {
   );
 
   function signupUser() {
+    setError(null);
     setLoading(true);
     AuthApiService.postUser({ ...values }).then(res => {
-      setError('');
       if (res.error) {
         if (res.error.email) {
           setError(`email ${res.error.email.message}`);
